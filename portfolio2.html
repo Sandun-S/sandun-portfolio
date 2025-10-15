@@ -1,0 +1,51 @@
+<!-- REPLACE the existing script in portfolio.html with this one -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // IMPORTANT: Paste the same firebaseConfig object here
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const grid = document.getElementById('portfolio-grid');
+
+        try {
+            // Fetch projects from Firestore
+            const projectsCol = collection(db, 'portfolio');
+            const q = query(projectsCol, orderBy('title'));
+            const projectSnapshot = await getDocs(q);
+
+            const allProjects = projectSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+            grid.innerHTML = ''; // Clear spinner
+            allProjects.forEach(project => {
+                const projectCard = document.createElement('a');
+                projectCard.href = `project-detail.html?id=${project.id}`; // Note: This will require modifications to project-detail.html to fetch from Firebase as well.
+                projectCard.className = 'project-card fade-in';
+                projectCard.innerHTML = `
+                    <img src="${project.thumbnailUrl}" alt="${project.title}">
+                    <div class="project-card-content">
+                        <span class="project-category">${project.category}</span>
+                        <h3>${project.title}</h3>
+                        <p>${project.summary}</p>
+                    </div>
+                `;
+                grid.appendChild(projectCard);
+            });
+
+        } catch (error) {
+            grid.innerHTML = '<p class="error-message">Could not load projects from Firebase. Please check the configuration.</p>';
+            console.error('Error fetching projects from Firebase:', error);
+        }
+    });
+</script>

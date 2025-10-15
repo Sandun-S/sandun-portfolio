@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow anyone to read the portfolio data
+    match /portfolio/{projectId} {
+      allow read: if true;
+      // Only allow authenticated users (you) to write/edit/delete
+      allow write, delete: if request.auth != null;
+    }
+  }
+}
