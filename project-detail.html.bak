@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Sandun Siwantha</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="main-header"></header>
+
+    <main id="project-detail-content">
+        <!-- Spinner while content is loading -->
+        <div class="spinner-container" style="min-height: 80vh;"><div class="spinner"></div></div>
+        
+        <!-- Content will be dynamically injected here -->
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentContainer = document.getElementById('project-detail-content');
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+
+            if (!projectId) {
+                contentContainer.innerHTML = '<div class="container"><p class="error-message">No project ID provided. Please select a project from the portfolio.</p></div>';
+                return;
+            }
+
+            fetch('assets/data/projects.json')
+                .then(response => response.json())
+                .then(data => {
+                    const project = data.projects.find(p => p.id === projectId);
+
+                    if (!project) {
+                        contentContainer.innerHTML = '<div class="container"><p class="error-message">Project not found.</p></div>';
+                        document.title = "Project Not Found | Sandun Siwantha";
+                        return;
+                    }
+                    
+                    document.title = `${project.title} | Sandun Siwantha`;
+
+                    // Dynamically build the HTML for the project
+                    let projectHtml = `
+                        <section class="project-hero" style="background-image: url('${project.heroUrl}');">
+                            <div class="project-hero-overlay">
+                                <div class="container">
+                                    <span class="project-category">${project.category}</span>
+                                    <h1>${project.title}</h1>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="content-section">
+                            <div class="container project-detail-grid">
+                                <div class="project-main-content">
+                                    <h2>Overview</h2>
+                                    <p>${project.overview}</p>
+                                    
+                                    <h2>Key Features</h2>
+                                    <ul>
+                                        ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                                    </ul>
+
+                                    ${project.challenges ? `
+                                    <h2>Challenges & Solutions</h2>
+                                    <p>${project.challenges}</p>
+                                    ` : ''}
+                                </div>
+                                <aside class="project-sidebar">
+                                    <h3>Technologies Used</h3>
+                                    <div class="tech-tags">
+                                        ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
+                                    </div>
+                                    ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="btn btn-secondary full-width">View on GitHub</a>` : ''}
+                                    ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="btn btn-primary full-width">View Live Demo</a>` : ''}
+                                </aside>
+                            </div>
+                        </section>
+                    `;
+
+                    contentContainer.innerHTML = projectHtml;
+                    // Re-run animation script after content injection
+                    initializeAnimations();
+                })
+                .catch(error => {
+                    contentContainer.innerHTML = '<div class="container"><p class="error-message">Error loading project details.</p></div>';
+                    console.error("Error fetching project details:", error);
+                });
+        });
+    </script>
+    <script src="assets/js/theme-switcher.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title will be set by JavaScript -->
     <title>Project Details | Sandun Siwantha</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,90 +14,141 @@
 
     <header id="main-header"></header>
 
-    <main id="project-detail-content">
-        <!-- Spinner while content is loading -->
-        <div class="spinner-container" style="min-height: 80vh;"><div class="spinner"></div></div>
-        
-        <!-- Content will be dynamically injected here -->
+    <main id="project-main-content" style="display: none;">
+        <!-- Page Header will be populated by JS -->
+        <section id="project-page-header" class="page-header"></section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="project-content-grid">
+                    <!-- Main Content Column -->
+                    <div class="project-details-main">
+                        <div class="project-hero-image fade-in">
+                            <img id="project-hero-img" src="" alt="Project Hero Image">
+                        </div>
+                        <div class="project-section fade-in">
+                            <h3>Overview</h3>
+                            <p id="project-overview"></p>
+                        </div>
+                        <div class="project-section fade-in">
+                            <h3>Key Features</h3>
+                            <ul id="project-features"></ul>
+                        </div>
+                         <div id="project-challenges-container" class="project-section fade-in" style="display: none;">
+                            <h3>Challenges & Solutions</h3>
+                            <p id="project-challenges"></p>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Column -->
+                    <aside class="project-sidebar fade-in">
+                        <div class="project-key-info">
+                            <h3>Project Info</h3>
+                            <div id="project-technologies-container" class="project-section">
+                                <h4>Technologies Used</h4>
+                                <div id="project-technologies" class="tech-tags">
+                                    <!-- Tech tags will be populated here -->
+                                </div>
+                            </div>
+                             <div id="project-github-container" class="project-section" style="display: none;">
+                                <h4>Repository</h4>
+                                <a id="project-github-link" href="#" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
     </main>
+    
+    <div id="loading-state" class="container" style="padding: 5rem 0; text-align: center;">
+        <div class="spinner-container"><div class="spinner"></div></div>
+        <p style="margin-top: 1rem;">Loading Project Details...</p>
+    </div>
 
     <footer id="main-footer"></footer>
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
+    <script src="assets/js/theme-switcher.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const contentContainer = document.getElementById('project-detail-content');
             const params = new URLSearchParams(window.location.search);
             const projectId = params.get('id');
+            const mainContent = document.getElementById('project-main-content');
+            const loadingState = document.getElementById('loading-state');
 
             if (!projectId) {
-                contentContainer.innerHTML = '<div class="container"><p class="error-message">No project ID provided. Please select a project from the portfolio.</p></div>';
+                loadingState.innerHTML = '<p class="error-message">No project ID provided. Please go back to the portfolio and select a project.</p>';
                 return;
             }
 
             fetch('assets/data/projects.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) throw new Error('Could not fetch project data.');
+                    return response.json();
+                })
                 .then(data => {
                     const project = data.projects.find(p => p.id === projectId);
 
                     if (!project) {
-                        contentContainer.innerHTML = '<div class="container"><p class="error-message">Project not found.</p></div>';
-                        document.title = "Project Not Found | Sandun Siwantha";
+                        loadingState.innerHTML = '<p class="error-message">Project not found. It may have been moved or deleted.</p>';
                         return;
                     }
-                    
+
+                    // Populate the page with project data
                     document.title = `${project.title} | Sandun Siwantha`;
-
-                    // Dynamically build the HTML for the project
-                    let projectHtml = `
-                        <section class="project-hero" style="background-image: url('${project.heroUrl}');">
-                            <div class="project-hero-overlay">
-                                <div class="container">
-                                    <span class="project-category">${project.category}</span>
-                                    <h1>${project.title}</h1>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="content-section">
-                            <div class="container project-detail-grid">
-                                <div class="project-main-content">
-                                    <h2>Overview</h2>
-                                    <p>${project.overview}</p>
-                                    
-                                    <h2>Key Features</h2>
-                                    <ul>
-                                        ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                                    </ul>
-
-                                    ${project.challenges ? `
-                                    <h2>Challenges & Solutions</h2>
-                                    <p>${project.challenges}</p>
-                                    ` : ''}
-                                </div>
-                                <aside class="project-sidebar">
-                                    <h3>Technologies Used</h3>
-                                    <div class="tech-tags">
-                                        ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
-                                    </div>
-                                    ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="btn btn-secondary full-width">View on GitHub</a>` : ''}
-                                    ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="btn btn-primary full-width">View Live Demo</a>` : ''}
-                                </aside>
-                            </div>
-                        </section>
+                    
+                    document.getElementById('project-page-header').innerHTML = `
+                        <div class="container">
+                            <h1>${project.title}</h1>
+                            <p>${project.category}</p>
+                        </div>
                     `;
+                    
+                    document.getElementById('project-hero-img').src = project.heroUrl || project.thumbnailUrl;
+                    document.getElementById('project-hero-img').alt = project.title;
 
-                    contentContainer.innerHTML = projectHtml;
-                    // Re-run animation script after content injection
+                    document.getElementById('project-overview').textContent = project.overview;
+
+                    const featuresList = document.getElementById('project-features');
+                    featuresList.innerHTML = '';
+                    project.features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        featuresList.appendChild(li);
+                    });
+
+                    if (project.challenges) {
+                        document.getElementById('project-challenges-container').style.display = 'block';
+                        document.getElementById('project-challenges').textContent = project.challenges;
+                    }
+
+                    const techContainer = document.getElementById('project-technologies');
+                    techContainer.innerHTML = '';
+                    project.technologies.forEach(tech => {
+                        const tag = document.createElement('span');
+                        tag.className = 'tech-tag';
+                        tag.textContent = tech;
+                        techContainer.appendChild(tag);
+                    });
+
+                    if (project.githubUrl) {
+                        document.getElementById('project-github-container').style.display = 'block';
+                        document.getElementById('project-github-link').href = project.githubUrl;
+                    }
+                    
+                    // Hide loading and show content
+                    loadingState.style.display = 'none';
+                    mainContent.style.display = 'block';
                     initializeAnimations();
                 })
                 .catch(error => {
-                    contentContainer.innerHTML = '<div class="container"><p class="error-message">Error loading project details.</p></div>';
-                    console.error("Error fetching project details:", error);
+                    console.error('Error:', error);
+                    loadingState.innerHTML = `<p class="error-message">${error.message}</p>`;
                 });
         });
     </script>
-    <script src="assets/js/theme-switcher.js"></script>
 </body>
 </html>
+
