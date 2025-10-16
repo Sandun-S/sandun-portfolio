@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
 
     const footerHTML = `
-        <div class="container">
+        <div class="container footer-content">
             <p>&copy; ${new Date().getFullYear()} Sandun Siwantha. All rights reserved.</p>
             <p>
                 <a href="https://www.linkedin.com/in/sandun-siwantha" target="_blank">LinkedIn</a> |

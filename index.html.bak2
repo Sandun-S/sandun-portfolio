@@ -49,7 +49,6 @@
                     <h2 class="section-title">Core Expertise</h2>
                     <p class="section-subtitle">Delivering end-to-end engineering services.</p>
                 </div>
-                <!-- FIXED: Restored card structure for visual appeal -->
                 <div class="services-grid-mini">
                     <div class="service-card-mini">
                         <h3>Firmware Development</h3>
@@ -87,7 +86,7 @@
         </section>
 
         <!-- Call to Action -->
-        <section class="cta-section">
+        <section class="cta-section bg-dark fade-in">
             <div class="container text-center">
                 <h2 class="cta-title">Have a Project in Mind?</h2>
                 <p class="cta-text">Let's collaborate to bring your innovative ideas to life. I'm ready to tackle your next engineering challenge.</p>
@@ -100,43 +99,57 @@
     <footer id="main-footer"></footer>
 
     <script src="assets/js/main.js"></script>
+    <!-- CORRECTED FILE PATH BELOW -->
     <script src="assets/js/animations.js"></script>
-    <script src="assets/js/theme-switcher.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetch('assets/data/projects.json')
                 .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
                     return response.json();
                 })
                 .then(data => {
                     const featuredProjects = data.projects.slice(0, 3);
                     const container = document.getElementById('featured-projects-grid');
                     if (!container) return;
+
                     container.innerHTML = '';
+
                     featuredProjects.forEach(project => {
                         const cardLink = document.createElement('a');
                         cardLink.href = `project-detail.html?id=${project.id}`;
                         cardLink.className = 'project-card fade-in';
+
                         const image = document.createElement('img');
                         image.src = project.thumbnailUrl;
                         image.alt = project.title;
+
                         const contentDiv = document.createElement('div');
                         contentDiv.className = 'project-card-content';
+
                         const categorySpan = document.createElement('span');
                         categorySpan.className = 'project-category';
                         categorySpan.textContent = project.category;
+
                         const titleH3 = document.createElement('h3');
                         titleH3.textContent = project.title;
+
                         const summaryP = document.createElement('p');
                         summaryP.textContent = project.summary;
+
                         contentDiv.appendChild(categorySpan);
                         contentDiv.appendChild(titleH3);
                         contentDiv.appendChild(summaryP);
+                        
                         cardLink.appendChild(image);
                         cardLink.appendChild(contentDiv);
+
                         container.appendChild(cardLink);
                     });
+                    // Re-initialize animations after adding new elements
                     initializeAnimations();
                 })
                 .catch(error => {
@@ -146,6 +159,7 @@
                 });
         });
     </script>
+    <script src="assets/js/theme-switcher.js"></script>
 </body>
 </html>
 

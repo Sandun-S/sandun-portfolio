@@ -16,17 +16,15 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h1>My Services</h1>
-                <p>Providing a comprehensive suite of embedded systems engineering services.</p>
+                <h1>Engineering Services</h1>
+                <p>End-to-end solutions to bring your hardware ideas to life.</p>
             </div>
         </section>
 
         <section class="content-section">
             <div class="container">
-                <!-- FIXED: Added a wrapper div with a new class for the main services grid -->
-                <div class="services-grid-main">
-                    
-                    <div class="service-card-main fade-in">
+                <div class="services-grid-full">
+                    <div class="service-card-full fade-in">
                         <h3>Firmware Development & Debugging</h3>
                         <p>Specializing in writing clean, efficient, and reliable C/C++ firmware for a wide range of microcontrollers (STM32, ESP32, nRF, ATmega). I offer services in bare-metal programming, RTOS implementation (FreeRTOS), and debugging complex issues to ensure your hardware performs flawlessly.</p>
                         <ul>
@@ -36,8 +34,7 @@
                             <li>Bootloader Development</li>
                         </ul>
                     </div>
-
-                    <div class="service-card-main fade-in">
+                     <div class="service-card-full fade-in">
                         <h3>IoT & Cloud Integration</h3>
                         <p>I architect and build complete IoT solutions, from the sensor node to the cloud dashboard. My expertise includes selecting the right connectivity protocols (WiFi, BLE, LoRaWAN) and integrating with cloud platforms like Firebase, AWS IoT, or a custom backend to deliver actionable data.</p>
                          <ul>
@@ -47,39 +44,35 @@
                             <li>Data Visualization Dashboards</li>
                         </ul>
                     </div>
-
-                    <div class="service-card-main fade-in">
+                     <div class="service-card-full fade-in">
                         <h3>Custom PCB Design & Prototyping</h3>
                         <p>Transform your concept into a production-ready design. Using KiCad, I provide schematic capture, multi-layer PCB layout, and library management. I can manage the entire prototyping process, including component sourcing and coordinating with manufacturers for assembly and testing.</p>
-                        <ul>
+                         <ul>
                             <li>Schematic Design & Layout</li>
                             <li>High-Density & Power-Efficient Design</li>
                             <li>Component Sourcing</li>
                             <li>Prototype Assembly & Testing</li>
                         </ul>
                     </div>
-
-                    <div class="service-card-main fade-in">
+                     <div class="service-card-full fade-in">
                         <h3>Automation & Control Systems</h3>
                         <p>Leveraging my experience in industrial automation, I design and build custom control systems for manufacturing, agriculture, and smart environments. This includes PLC programming, HMI design, and creating bespoke microcontroller-based controllers for specific tasks.</p>
-                        <ul>
+                         <ul>
                             <li>PLC & Microcontroller-based Systems</li>
                             <li>Sensor Integration & Actuator Control</li>
                             <li>Process Automation</li>
                             <li>Human-Machine Interface (HMI) Design</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="cta-section">
+         <section class="cta-section bg-dark fade-in">
             <div class="container text-center">
-                 <h2 class="cta-title">Ready to Start Your Project?</h2>
-                 <p class="cta-text">Let's discuss your requirements and how I can help you achieve your goals.</p>
-                 <a href="contact.html" class="btn btn-primary">Request a Consultation</a>
+                <h2 class="cta-title">Ready to Start Your Project?</h2>
+                <p class="cta-text">I provide a free initial consultation to discuss your project requirements and how I can help you achieve your goals.</p>
+                <a href="contact.html" class="btn btn-primary">Request a Consultation</a>
             </div>
         </section>
 
@@ -92,4 +85,3 @@
     <script src="assets/js/theme-switcher.js"></script>
 </body>
 </html>
-
