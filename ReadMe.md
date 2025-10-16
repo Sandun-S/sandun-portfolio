@@ -327,4 +327,6 @@ const analytics = getAnalytics(app);
 
 Manual Updates: Make your changes locally, then run a single command (firebase deploy) in your terminal to push the updates live. It's fast and simple.
 
+npm install -g firebase-tools
+firebase login
 firebase deploy --only hosting
