@@ -14,70 +14,79 @@
     <header id="main-header"></header>
 
     <main>
-        <section class="hero-section-home">
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Solving Complex Engineering Challenges</h1>
+                    <span class="hero-subtitle">SANDUN SIWANTHA</span>
+                    <h1 class="hero-title">Embedded Systems Engineer & IoT Specialist</h1>
                     <p class="hero-description">
-                        I design and develop robust firmware, custom PCBs, and scalable IoT systems that bring your innovative hardware products to life.
+                        Building robust firmware and scalable IoT solutions that bridge the physical and digital worlds. Based in Sri Lanka, available for consulting worldwide.
                     </p>
                     <div class="hero-buttons">
-                        <a href="portfolio.html" class="btn btn-primary">See My Work</a>
-                        <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+                        <a href="portfolio.html" class="btn btn-primary">View My Work</a>
+                        <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="home-section bg-light">
+        <!-- About Me Snippet -->
+        <section class="home-section fade-in">
             <div class="container text-center">
-                <h2 class="section-title">Why Work With Me?</h2>
-                <p class="section-subtitle">A dedicated partner for your hardware innovation.</p>
-                <div class="why-grid">
-                    <div class="why-card fade-in">
-                        <div class="why-icon">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-8h10v2H7v-2zm0-4h10v2H7V8z"/></svg>
-                        </div>
-                        <h3>Precision Engineering</h3>
-                        <p>Delivering high-quality, reliable solutions by focusing on clean code, robust design, and meticulous attention to detail.</p>
-                    </div>
-                    <div class="why-card fade-in">
-                        <div class="why-icon">
-                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                        </div>
-                        <h3>Innovative Solutions</h3>
-                        <p>Leveraging modern tools and a deep understanding of core principles to solve complex problems creatively and efficiently.</p>
-                    </div>
-                    <div class="why-card fade-in">
-                        <div class="why-icon">
-                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.09 15.59L12 17.5l1.91-1.91-1.41-1.41-1.5 1.5-1.5-1.5-1.41 1.41zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                        </div>
-                        <h3>End-to-End Expertise</h3>
-                        <p>From initial concept and PCB design to firmware development and cloud integration, I offer a complete skillset for your project.</p>
-                    </div>
-                </div>
-                
-                <!-- NEW: Button linking to the Services page -->
-                <div class="text-center" style="margin-top: 3rem;">
-                    <a href="services.html" class="btn btn-primary-outline">Explore All Services</a>
-                </div>
+                <h2 class="section-title">Driven by Innovation and Precision Engineering</h2>
+                <p class="section-subtitle">
+                    I am an Embedded Systems Engineer with a passion for solving complex challenges, from low-level firmware to full-stack IoT applications. My experience at leading Sri Lankan tech firms has equipped me with the skills to deliver high-quality, reliable, and efficient solutions.
+                </p>
+                <a href="about.html" class="btn btn-primary-outline">More About Me</a>
+            </div>
+        </section>
 
+        <!-- Featured Services -->
+        <section class="home-section bg-light fade-in">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">Core Expertise</h2>
+                    <p class="section-subtitle">Delivering end-to-end engineering services.</p>
+                </div>
+                <!-- FIXED: Restored card structure for visual appeal -->
+                <div class="services-grid-mini">
+                    <div class="service-card-mini">
+                        <h3>Firmware Development</h3>
+                        <p>Robust C/C++ programming for microcontrollers like STM32, ESP32, and Nordic series.</p>
+                    </div>
+                    <div class="service-card-mini">
+                        <h3>PCB Design</h3>
+                        <p>Custom PCB schematic and layout design using KiCad for rapid and reliable prototyping.</p>
+                    </div>
+                    <div class="service-card-mini">
+                        <h3>IoT & Cloud</h3>
+                        <p>Connecting hardware to the cloud with platforms like Firebase and AWS IoT.</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                     <a href="services.html" class="btn btn-primary">Explore All Services</a>
+                </div>
             </div>
         </section>
         
+        <!-- Featured Projects -->
         <section class="home-section fade-in">
              <div class="container">
                 <div class="text-center">
                     <h2 class="section-title">Featured Projects</h2>
                     <p class="section-subtitle">A glimpse into my portfolio of work.</p>
                 </div>
-                <div id="featured-projects-grid" class="projects-grid"></div>
+                <div id="featured-projects-grid" class="projects-grid">
+                    <!-- Projects will be loaded here by JavaScript -->
+                </div>
                  <div class="text-center" style="margin-top: 2rem;">
                      <a href="portfolio.html" class="btn btn-primary-outline">View All Projects</a>
                 </div>
             </div>
         </section>
 
+        <!-- Call to Action -->
         <section class="cta-section">
             <div class="container text-center">
                 <h2 class="cta-title">Have a Project in Mind?</h2>
@@ -85,6 +94,7 @@
                 <a href="contact.html" class="btn btn-primary">Let's Build Together</a>
             </div>
         </section>
+
     </main>
 
     <footer id="main-footer"></footer>
@@ -95,7 +105,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetch('assets/data/projects.json')
-                .then(response => { if (!response.ok) throw new Error('Network error'); return response.json(); })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
                 .then(data => {
                     const featuredProjects = data.projects.slice(0, 3);
                     const container = document.getElementById('featured-projects-grid');
@@ -127,11 +140,12 @@
                     initializeAnimations();
                 })
                 .catch(error => {
-                    console.error('Failed to load projects:', error);
+                    console.error('Failed to load featured projects:', error);
                     const container = document.getElementById('featured-projects-grid');
-                    if(container) container.innerHTML = '<p class="error-message">Could not load projects.</p>';
+                    if(container) container.innerHTML = '<p class="error-message">Could not load featured projects.</p>';
                 });
         });
     </script>
 </body>
 </html>
+

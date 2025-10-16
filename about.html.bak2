@@ -23,17 +23,17 @@
 
         <section class="content-section">
             <div class="container">
+                <!-- REDESIGNED LAYOUT WITH IMAGE -->
                 <div class="about-grid-new">
-                    <!-- FIXED: Replaced image with a professional monogram -->
                     <div class="about-image-container fade-in">
-                        <div class="about-image-placeholder">
-                            <span class="monogram-text">SS</span>
-                        </div>
+                        <!-- IMPORTANT: Replace this with your actual photo -->
+                        <img src="assets/images/profile-photo.png" alt="Sandun Siwantha" class="about-image">
                     </div>
                     <div class="about-text fade-in">
                         <h3>Hello, I'm Sandun Siwantha.</h3>
                         <p>I am a passionate Embedded Systems Engineer from Sri Lanka with a Bachelor's Degree in Engineering from the University of Moratuwa. My professional journey has taken me through prominent companies like SLT-Mobitel and Atlas Axillia, where I honed my skills in automation, IoT, and full-stack development.</p>
                         <p>My core competency lies in translating complex requirements into functional, efficient, and reliable electronic systems. Whether it's writing low-level firmware, designing a custom PCB, or building a cloud-connected IoT network, I thrive on the challenge of creating technology that works seamlessly.</p>
+                        <p>I am a strong advocate for open-source tools and continuous learning, always exploring new technologies to enhance my skill set. My goal is to leverage my expertise to help businesses innovate and create impactful products.</p>
                         <div class="about-buttons">
                             <a href="https://www.linkedin.com/in/sandun-siwantha" target="_blank" class="btn btn-primary">LinkedIn</a>
                             <a href="https://github.com/Sandun-S" target="_blank" class="btn btn-secondary">GitHub</a>
@@ -46,6 +46,7 @@
         <section class="content-section bg-light">
             <div class="container">
                  <div class="timelines-wrapper fade-in">
+                    <!-- Work Experience -->
                     <div class="experience-section">
                         <h3 class="experience-title">Work Experience</h3>
                         <div class="timeline">
@@ -78,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Education -->
                     <div class="experience-section">
                         <h3 class="experience-title">Education</h3>
                         <div class="timeline">
@@ -95,6 +97,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer id="main-footer"></footer>
