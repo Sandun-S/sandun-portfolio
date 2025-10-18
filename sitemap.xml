@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://sandunsiwantha.com/</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/about</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/services</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/portfolio</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/contact</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Project Detail Pages (with clean URLs) -->
+    <url>
+        <loc>https://sandunsiwantha.com/project-detail?id=agri-tech-iot</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/project-detail?id=wearable-pcb</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/project-detail?id=industrial-firmware</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/project-detail?id=smart-hydroponics</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/project-detail?id=vehicle-tracker</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandunsiwantha.com/project-detail?id=ble-beacon</loc>
+        <lastmod>2025-10-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <!-- Add new project URLs here without .html -->
+
+</urlset>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Point bots to the sitemap
+Sitemap: https://sandunsiwantha.com/sitemap.xml
