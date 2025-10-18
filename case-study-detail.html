@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | Sandun Siwantha</title>
+    <meta name="description" content="Explore a detailed case study from the portfolio of Sandun Siwantha, an embedded systems engineer in Sri Lanka.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
+</head>
+<body>
+    <header id="main-header"></header>
+
+    <main id="project-main-content" style="display: none;">
+        <section id="project-page-header" class="page-header"></section>
+        <section class="content-section">
+            <div class="container">
+                <div class="project-content-grid">
+                    <div class="project-details-main">
+                        <div class="project-hero-image fade-in">
+                            <img id="project-hero-img" src="" alt="Project Hero Image" onerror="this.src='https://placehold.co/1200x600/1e1e1e/FFF?text=Image+Not+Available'">
+                        </div>
+                        <div class="case-study-section fade-in">
+                            <h3>The Challenge</h3>
+                            <p id="project-challenge"></p>
+                        </div>
+                        <div class="case-study-section fade-in">
+                            <h3>My Solution</h3>
+                            <p id="project-solution"></p>
+                        </div>
+                        <div class="case-study-section fade-in">
+                            <h3>Outcome & Impact</h3>
+                            <ul id="project-outcome"></ul>
+                        </div>
+                    </div>
+                    <aside class="project-sidebar fade-in">
+                        <div class="project-key-info">
+                            <h3>Project Info</h3>
+                            <div class="project-section">
+                                <h4>Technologies Used</h4>
+                                <div id="project-technologies" class="tech-tags"></div>
+                            </div>
+                            <div id="project-github-container" class="project-section" style="display: none;">
+                                <h4>Repository</h4>
+                                <a id="project-github-link" href="#" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        <section class="cta-section bg-light">
+             <div class="container text-center">
+                <h2 class="cta-title">Like What You See?</h2>
+                <p class="cta-text">Let's discuss how my expertise can bring value to your next project.</p>
+                <a href="contact.html" class="btn btn-primary">Request a Free Consultation</a>
+            </div>
+        </section>
+    </main>
+    
+    <div id="loading-state" class="container" style="padding: 5rem 0; text-align: center;">
+        <div class="spinner-container"><div class="spinner"></div></div>
+        <p style="margin-top: 1rem;">Loading Case Study...</p>
+    </div>
+
+    <footer id="main-footer"></footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/theme-switcher.js"></script>
+
+    <!-- CORRECTED SCRIPT TO FETCH FROM FIRESTORE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {"apiKey":"AIzaSyBzAT0Chvt7xBDf01TxaAYzfhSznr4qhck","authDomain":"sandunportfolio.firebaseapp.com","projectId":"sandunportfolio","storageBucket":"sandunportfolio.appspot.com","messagingSenderId":"367143211095","appId":"1:367143211095:web:0f0fb1db9b706b60b61312","measurementId":"G-MDMDYC2L3F"};
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            const mainContent = document.getElementById('project-main-content');
+            const loadingState = document.getElementById('loading-state');
+
+            if (!projectId) {
+                loadingState.innerHTML = '<p class="error-message">No project ID provided. Please select a case study.</p>';
+                return;
+            }
+
+            try {
+                const docRef = doc(db, "case_studies", projectId);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const project = docSnap.data();
+                    
+                    document.title = `Case Study: ${project.title} | Sandun Siwantha`;
+                    document.getElementById('project-page-header').innerHTML = `<div class="container"><h1>${project.title}</h1><p>${project.category}</p></div>`;
+                    document.getElementById('project-hero-img').src = project.imageUrl || 'https://placehold.co/1200x600/0d9488/FFF?text=Image+Not+Provided';
+                    document.getElementById('project-hero-img').alt = project.title;
+                    document.getElementById('project-challenge').textContent = project.challenge;
+                    document.getElementById('project-solution').textContent = project.solution;
+
+                    const outcomeList = document.getElementById('project-outcome');
+                    outcomeList.innerHTML = '';
+                    project.outcomes.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        outcomeList.appendChild(li);
+                    });
+                    
+                    const techContainer = document.getElementById('project-technologies');
+                    techContainer.innerHTML = '';
+                    project.technologies.forEach(tech => {
+                        const tag = document.createElement('span');
+                        tag.className = 'tech-tag';
+                        tag.textContent = tech;
+                        techContainer.appendChild(tag);
+                    });
+
+                    if (project.githubUrl) {
+                        document.getElementById('project-github-container').style.display = 'block';
+                        document.getElementById('project-github-link').href = project.githubUrl;
+                    }
+                    
+                    loadingState.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    initializeAnimations();
+                } else {
+                    loadingState.innerHTML = '<p class="error-message">Case study not found. It may have been moved or deleted.</p>';
+                }
+            } catch (error) {
+                console.error("Error fetching document:", error);
+                loadingState.innerHTML = `<p class="error-message">Failed to load the case study. Please check the connection and try again.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
+

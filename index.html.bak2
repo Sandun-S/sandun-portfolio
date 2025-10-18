@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandun Siwantha | Embedded Systems & IoT Consultant</title>
     <meta name="description" content="Professional portfolio of Sandun Siwantha, an embedded systems engineer in Colombo, Sri Lanka, specializing in firmware development, PCB design, and IoT solutions.">
-    
-    <!-- SwiperJS CSS for the slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,9 +50,7 @@
         <section class="home-section fade-in">
              <div class="container">
                 <div class="text-center"><h2 class="section-title">Featured Case Studies</h2><p class="section-subtitle">A glimpse into my problem-solving approach.</p></div>
-                <div id="featured-projects-grid" class="projects-grid">
-                    <div class="spinner-container"><div class="spinner"></div></div>
-                </div>
+                <div id="featured-projects-grid" class="projects-grid"></div>
                 <div class="text-center" style="margin-top: 2rem;"><a href="case-studies.html" class="btn btn-primary-outline">View All Case Studies</a></div>
             </div>
         </section>
@@ -65,13 +59,8 @@
             <div class="container text-center">
                 <h2 class="section-title">What My Colleagues Say</h2>
                 <p class="section-subtitle">Trust and results, verified by senior engineers and managers.</p>
-                <div class="swiper testimonial-slider">
-                    <div class="swiper-wrapper" id="testimonials-wrapper">
-                        <div class="spinner-container"><div class="spinner"></div></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                <div id="testimonials-grid" class="testimonials-grid">
+                    <div class="spinner-container"><div class="spinner"></div></div>
                 </div>
             </div>
         </section>
@@ -87,12 +76,10 @@
 
     <footer id="main-footer"></footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/theme-switcher.js"></script>
 
-    <!-- COMPLETE & CORRECTED SCRIPT FOR HOMEPAGE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -119,24 +106,20 @@
                 initializeAnimations();
             });
 
-            // --- Load Testimonials and Initialize Slider ---
-            const testimonialsWrapper = document.getElementById('testimonials-wrapper');
+            // --- Load Testimonials ---
+            const testimonialsGrid = document.getElementById('testimonials-grid');
             const testimonialsQuery = query(collection(db, 'testimonials'), orderBy('author'));
-            
             onSnapshot(testimonialsQuery, (snapshot) => {
-                if (!testimonialsWrapper) return;
                 if (snapshot.empty) {
-                    testimonialsWrapper.innerHTML = '<p class="info-message">No testimonials added yet.</p>';
+                    testimonialsGrid.innerHTML = '<p class="info-message">No testimonials added yet.</p>';
                     return;
                 }
-                testimonialsWrapper.innerHTML = ''; // Clear spinner
+                testimonialsGrid.innerHTML = '';
                 snapshot.docs.forEach(doc => {
                     const testimonial = doc.data();
-                    const slide = document.createElement('div');
-                    slide.className = 'swiper-slide';
-                    
                     const card = document.createElement('div');
-                    card.className = 'testimonial-card';
+                    card.className = 'testimonial-card fade-in';
+                    // FIXED: New, more professional HTML structure
                     card.innerHTML = `
                         <div class="testimonial-icon">“</div>
                         <p class="testimonial-quote">${testimonial.quote}</p>
@@ -145,22 +128,12 @@
                             <p class="testimonial-title">${testimonial.title}</p>
                         </footer>
                     `;
-                    slide.appendChild(card);
-                    testimonialsWrapper.appendChild(slide);
+                    testimonialsGrid.appendChild(card);
                 });
-
-                // Initialize SwiperJS
-                new Swiper('.testimonial-slider', {
-                    loop: true,
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    autoplay: { delay: 5000, disableOnInteraction: false },
-                    pagination: { el: '.swiper-pagination', clickable: true },
-                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-                    breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 } }
-                });
+                initializeAnimations();
             });
         });
     </script>
 </body>
 </html>
+

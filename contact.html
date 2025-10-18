@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-        <!-- Favicon Links -->
+    <!-- Favicon Links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
@@ -24,46 +24,56 @@
         <section class="page-header">
             <div class="container">
                 <h1>Get in Touch</h1>
-                <p>I'm available for freelance consulting and full-time opportunities.</p>
+                <p>I'm available for freelance consulting and full-time opportunities. Let's build something great together.</p>
             </div>
         </section>
 
         <section class="content-section">
-            <div class="container contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>Contact Information</h3>
-                    <p>Feel free to reach out via email or connect with me on social media. I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team.</p>
-                    <ul class="contact-details">
-                        <li><strong>Email:</strong> <a href="mailto:sandun.siwantha.dev@gmail.com">sandun.siwantha.dev@gmail.com</a></li>
-                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sandun-siwantha" target="_blank">linkedin.com/in/sandun-siwantha</a></li>
-                        <li><strong>GitHub:</strong> <a href="https://github.com/Sandun-S" target="_blank">github.com/Sandun-S</a></li>
-                        <li><strong>Location:</strong> Colombo, Sri Lanka</li>
-                    </ul>
-                </div>
-                <div class="contact-form-container fade-in">
-                    <h3>Send Me a Message</h3>
-                    
-                    <!-- CORRECTED FORM -->
-                    <form class="contact-form" action="https://formspree.io/f/mnnglvld" method="POST">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+            <div class="container">
+                <div class="contact-grid-new">
+                    <!-- Left Column: Direct Contact Info -->
+                    <div class="contact-info-panel fade-in">
+                        <h3>Direct Contact</h3>
+                        <p>For quick inquiries or to start a conversation, feel free to use the methods below.</p>
+                        
+                        <a href="https://wa.me/94771234567?text=Hello%20Sandun,%20I%20saw%20your%20portfolio%20and%20I'd%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp" target="_blank">
+                            <!-- FIXED: Correct WhatsApp SVG Icon -->
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.586-1.457l-6.354 1.654zm6.838-5.635l-.333-.195c-1.498-.878-2.493-2.316-2.492-3.89.002-3.529 2.868-6.395 6.397-6.395 1.732.001 3.364.67 4.591 1.898 1.228 1.228 1.898 2.859 1.897 4.591-.003 3.529-2.868 6.396-6.397 6.396-1.536 0-3.004-.543-4.145-1.496l-.21-.132-3.063.803 1.01-3.004z"/></svg>
+                            Chat on WhatsApp
+                        </a>
+
+                        <ul class="contact-details-new">
+                            <li>
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                                <a href="mailto:sandun.siwantha.dev@gmail.com">sandun.siwantha.dev@gmail.com</a>
+                            </li>
+                             <li>
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                <span>Colombo, Sri Lanka</span>
+                            </li>
+                        </ul>
+
+                        <div class="social-connect">
+                            <h4>Connect on Social Media</h4>
+                            <div class="footer-socials">
+                                <a href="https://www.linkedin.com/in/sandun-siwantha" target="_blank" aria-label="LinkedIn"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-11 6H5v10h3V9zm-1.5-2a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18 9h-2.5a2.5 2.5 0 0 0-2.5 2.5V19h3v-5.5a.5.5 0 0 1 .5-.5h.5V19h3V11.5A2.5 2.5 0 0 0 18 9z"/></svg></a>
+                                <a href="https://github.com/Sandun-S" target="_blank" aria-label="GitHub"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-1.02-.01-1.8-2.6.57-3.15-1.1-3.15-1.1-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.84-2.33 4.68-4.56 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .26.18.57.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
+                                <a href="#" target="_blank" aria-label="Facebook"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06c0 5.52 4.5 10.02 10 10.02s10-4.5 10-10.02C22 6.53 17.5 2.04 12 2.04zM16.5 8.25h-1.88c-.38 0-.47.18-.47.48v1.13h2.3l-.3 2.3h-2v5.84h-2.5V12.1h-2V9.8h2V8.04c0-2 1.2-3.04 3-3.04h2.38v2.25z"/></svg></a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <!-- Use `_replyto` for easy replies -->
-                            <input type="email" id="email" name="_replyto" required>
-                        </div>
-                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                    </div>
+
+                    <div class="contact-form-container fade-in">
+                        <h3>Send a Detailed Inquiry</h3>
+                        <p>For project proposals or more detailed questions, please use the form below. I'll get back to you within 1-2 business days.</p>
+                        <form class="contact-form" action="https://formspree.io/f/mnnglvld" method="POST">
+                            <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" name="name" required></div>
+                            <div class="form-group"><label for="email">Your Email</label><input type="email" id="email" name="_replyto" required></div>
+                            <div class="form-group"><label for="subject">Subject</label><input type="text" id="subject" name="subject" required></div>
+                            <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="6" required></textarea></div>
+                            <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -76,3 +86,4 @@
     <script src="assets/js/theme-switcher.js"></script>
 </body>
 </html>
+

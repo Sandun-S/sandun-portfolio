@@ -12,7 +12,7 @@ TABLE OF CONTENTS
 8.  PORTFOLIO FILTER
 9.  ABOUT PAGE (MONOGRAM & TIMELINE)
 10. PROJECT DETAIL PAGE
-11. FORMS & CONTACT PAGE
+11. FORMS
 12. FOOTER & CTA
 13. ANIMATIONS & UTILITIES
 14. THEME SWITCHER
@@ -34,7 +34,6 @@ TABLE OF CONTENTS
     --color-secondary-btn-bg: #e9ecef;
     --color-secondary-btn-text: #495057;
     --color-secondary-btn-hover: #ced4da;
-    --color-hero-text: #ffffff;
 }
 [data-theme="dark"] {
     --color-background: #121212;
@@ -46,7 +45,6 @@ TABLE OF CONTENTS
     --color-secondary-btn-bg: #333333;
     --color-secondary-btn-text: #e0e0e0;
     --color-secondary-btn-hover: #444444;
-    --color-hero-text: #e0e0e0;
 }
 
 /* 2. GLOBAL STYLES */
@@ -93,7 +91,16 @@ main { display: block; }
 .section-subtitle { max-width: 600px; margin: 0 auto 3rem auto; color: var(--color-text-secondary); }
 
 /* 6. HERO & PAGE HEADERS */
-.hero-section-home { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 80px); padding: 3rem 0; text-align: center; background-color: var(--color-background); }
+/* FIXED: Full-screen height and distinct background color */
+.hero-section-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Guarantees it fills the screen below the header */
+    padding: 3rem 0;
+    text-align: center;
+    background-color: var(--color-background); /* Creates separation from next section */
+}
 .hero-content { max-width: 800px; }
 .hero-title { color: var(--color-text-primary); }
 .hero-description { font-size: 1.25rem; color: var(--color-text-secondary); margin-bottom: 2rem; }
@@ -118,75 +125,6 @@ main { display: block; }
 .services-grid-main { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 .service-card-main { background-color: var(--color-background-light); padding: 2rem; border-radius: 12px; border: 1px solid var(--color-border); }
 .service-card-main h3 { color: var(--color-primary); }
-
-/* FIXED: New, professional styles for testimonials */
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 3rem;
-}
-.testimonial-card {
-    position: relative;
-    background-color: var(--color-card-bg);
-    border: 1px solid var(--color-border);
-    padding: 2.5rem 2rem 2rem 2rem;
-    border-radius: 12px;
-    text-align: left;
-}
-.testimonial-icon {
-    position: absolute;
-    top: -0.5rem;
-    left: 1.5rem;
-    font-size: 6rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    opacity: 0.1;
-    line-height: 1;
-}
-.testimonial-quote {
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 2;
-}
-.testimonial-attribution {
-    margin-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
-    padding-top: 1.5rem;
-}
-.testimonial-author {
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin: 0;
-}
-.testimonial-title {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    margin: 0;
-}
-
-/* UPDATED: Testimonial card styles to work inside a slider */
-.testimonial-card {
-    position: relative;
-    background-color: var(--color-card-bg);
-    border: 1px solid var(--color-border);
-    padding: 2.5rem 2rem 2rem 2rem;
-    border-radius: 12px;
-    text-align: left;
-    height: 100%; /* Ensures cards in the same row are equal height */
-    display: flex;
-    flex-direction: column;
-}
-.testimonial-icon { position: absolute; top: -0.5rem; left: 1.5rem; font-size: 6rem; font-weight: 700; color: var(--color-primary); opacity: 0.1; line-height: 1; }
-.testimonial-quote { font-size: 1.05rem; font-style: italic; color: var(--color-text-secondary); margin-bottom: 1.5rem; position: relative; z-index: 2; flex-grow: 1; /* Pushes attribution to the bottom */ }
-.testimonial-attribution { margin-top: 1.5rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
-.testimonial-author { font-weight: 700; color: var(--color-text-primary); margin: 0; }
-.testimonial-title { font-size: 0.9rem; color: var(--color-text-secondary); margin: 0; }
-
-
 
 /* 8. PORTFOLIO FILTER */
 .portfolio-filter { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
@@ -223,20 +161,8 @@ main { display: block; }
 .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tech-tag { background-color: var(--color-secondary-btn-bg); color: var(--color-secondary-btn-text); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85rem; }
 
-/* 11. FORMS & CONTACT PAGE */
-.contact-grid-new { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
-.contact-info-panel { background-color: var(--color-background-light); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; }
-.btn-whatsapp { background-color: #25D366; color: #fff; width: 100%; margin-bottom: 2rem; }
-.btn-whatsapp:hover { background-color: #1DA851; color: #fff; }
-.contact-details-new { list-style: none; padding: 0; margin: 0; }
-.contact-details-new li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; font-size: 1.05rem; }
-.contact-details-new .icon { color: var(--color-primary); font-size: 1.5rem; }
-.social-connect { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border); }
-.social-connect h4 { text-align: center; margin-bottom: 1.5rem; color: var(--color-text-secondary); }
-/* FIXED: Larger, more prominent social icons on contact page */
-.social-connect .footer-socials a { font-size: 1.75rem; color: var(--color-text-secondary); }
-.social-connect .footer-socials a:hover { color: var(--color-text-primary); }
-
+/* 11. FORMS */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
 .form-group { margin-bottom: 1.5rem; }
 .form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; }
 .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--color-border); background-color: var(--color-background); color: var(--color-text-primary); font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
@@ -249,10 +175,8 @@ main { display: block; }
 #main-footer { padding: 2.5rem 0; background-color: #212529; color: #adb5bd; }
 [data-theme="dark"] #main-footer { background-color: #000; }
 .footer-content { text-align: center; }
-.footer-socials { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
-.footer-socials a { color: #adb5bd; transition: color 0.3s; }
-.footer-socials a:hover { color: #fff; }
 .footer-content p { margin-bottom: 0.5rem; color: #adb5bd; }
+.footer-content a { color: #f8f9fa; font-weight: 500; transition: color 0.3s; }
 .footer-content a:hover { color: var(--color-primary); }
 
 /* 13. ANIMATIONS & UTILITIES */
@@ -270,65 +194,144 @@ main { display: block; }
 [data-theme="dark"] .theme-switcher .icon-moon { display: block; }
 [data-theme="dark"] .theme-switcher .icon-sun { display: none; }
 
+
+
+
+
 /* 15. ICONS */
 .icon { width: 1em; height: 1em; fill: currentColor; }
 .why-icon .icon { width: 1.5em; height: 1.5em; }
 
-
-/* 16. SWIPER SLIDER (TESTIMONIALS) */
-/* NEW: Styles for the testimonial slider */
-.testimonial-slider {
-    padding: 2rem 0; /* Add some vertical padding */
-    position: relative;
+/* NEW: Styles for the redesigned Contact Page */
+.contact-grid-new {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
 }
 
-.swiper-slide {
-    height: auto; /* Allow slide to grow with card content */
-    padding-bottom: 3rem; /* Space for pagination */
+.contact-info-panel {
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
 }
 
-/* Style the navigation arrows */
-.swiper-button-next,
-.swiper-button-prev {
-    color: var(--color-primary);
-    top: 50%;
-    transform: translateY(-150%); /* Position arrows nicely in the middle */
+.btn-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 2rem;
 }
-[data-theme="dark"] .swiper-button-next,
-[data-theme="dark"] .swiper-button-prev {
+.btn-whatsapp:hover {
+    background-color: #1DA851;
     color: #fff;
 }
-.swiper-button-next:after,
-.swiper-button-prev:after {
+
+.contact-details-new {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-details-new li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+.contact-details-new .icon {
+    color: var(--color-primary);
     font-size: 1.5rem;
-    font-weight: 900;
 }
 
-/* Style the pagination dots */
-.swiper-pagination-bullet {
-    background-color: var(--color-text-secondary);
-    opacity: 0.5;
+.social-connect {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
 }
-.swiper-pagination-bullet-active {
-    background-color: var(--color-primary);
-    opacity: 1;
+.social-connect h4 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+}
+.social-connect .footer-socials { /* Reusing footer social styles */
+    justify-content: center; 
 }
 
 
-/* 17. MEDIA QUERIES */
+
+
+
+/* NEW: Styles for Case Study Detail Page */
+.case-study-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.case-study-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.case-study-section h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+/* NEW: Styles for Testimonials Section */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.testimonial-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+}
+.testimonial-quote {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+.testimonial-author {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0;
+}
+.testimonial-title {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* NEW: Styles for Admin Dashboard */
+.admin-login-container, .admin-dashboard { max-width: 1140px; margin: 2rem auto; padding: 2rem; background-color: var(--color-background-light); border-radius: 12px; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding-bottom: 1rem; margin-bottom: 1rem; }
+.admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); }
+.admin-tabs button { background: none; border: none; padding: 1rem; cursor: pointer; font-size: 1rem; color: var(--color-text-secondary); border-bottom: 3px solid transparent; }
+.admin-tabs button.active { color: var(--color-primary); border-bottom-color: var(--color-primary); font-weight: 600; }
+
+
+
+
+
+
+/* 16. MEDIA QUERIES */
 @media (max-width: 992px) {
-    .projects-grid, .services-grid-main, .project-content-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .projects-grid, .services-grid-main, .project-content-grid, .testimonials-grid, .contact-grid-new { grid-template-columns: 1fr; }
     .why-grid { grid-template-columns: 1fr; gap: 2rem; }
     .about-grid-new { grid-template-columns: 1fr; text-align: center; }
     .about-image-placeholder { max-width: 200px; height: 200px; }
     .monogram-text { font-size: 5rem; }
     .about-buttons { justify-content: center; }
-    .contact-grid-new { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
     .project-sidebar { position: static; margin-top: 2rem; }
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none; /* Hide arrows on small screens for a cleaner look */
-    }
 }
 @media (max-width: 768px) {
     body { padding-top: 70px; }
@@ -342,3 +345,4 @@ main { display: block; }
     .services-grid-main { grid-template-columns: 1fr; }
     .why-grid { grid-template-columns: 1fr; }
 }
+

@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandun Siwantha | Embedded Systems & IoT Consultant</title>
     <meta name="description" content="Professional portfolio of Sandun Siwantha, an embedded systems engineer in Colombo, Sri Lanka, specializing in firmware development, PCB design, and IoT solutions.">
-    
-    <!-- SwiperJS CSS for the slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +27,7 @@
                     <h1 class="hero-title">Solving Complex Engineering Challenges</h1>
                     <p class="hero-description">I design and develop robust firmware, custom PCBs, and scalable IoT systems that bring your innovative hardware products to life.</p>
                     <div class="hero-buttons">
-                        <a href="case-studies.html" class="btn btn-primary">See My Work</a>
+                        <a href="portfolio.html" class="btn btn-primary">See My Work</a>
                         <a href="contact.html" class="btn btn-secondary">Contact Me</a>
                     </div>
                 </div>
@@ -54,24 +50,18 @@
         <section class="home-section fade-in">
              <div class="container">
                 <div class="text-center"><h2 class="section-title">Featured Case Studies</h2><p class="section-subtitle">A glimpse into my problem-solving approach.</p></div>
-                <div id="featured-projects-grid" class="projects-grid">
-                    <div class="spinner-container"><div class="spinner"></div></div>
-                </div>
-                <div class="text-center" style="margin-top: 2rem;"><a href="case-studies.html" class="btn btn-primary-outline">View All Case Studies</a></div>
+                <div id="featured-projects-grid" class="projects-grid"></div>
+                <div class="text-center" style="margin-top: 2rem;"><a href="portfolio.html" class="btn btn-primary-outline">View All Projects</a></div>
             </div>
         </section>
         
         <section class="home-section bg-light">
             <div class="container text-center">
                 <h2 class="section-title">What My Colleagues Say</h2>
-                <p class="section-subtitle">Trust and results, verified by senior engineers and managers.</p>
-                <div class="swiper testimonial-slider">
-                    <div class="swiper-wrapper" id="testimonials-wrapper">
-                        <div class="spinner-container"><div class="spinner"></div></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                <p class="section-subtitle">Testimonials from managers and senior engineers I've worked with.</p>
+                <div id="testimonials-grid" class="testimonials-grid">
+                    <!-- Testimonials will be loaded here by JavaScript -->
+                    <div class="spinner-container"><div class="spinner"></div></div>
                 </div>
             </div>
         </section>
@@ -87,80 +77,96 @@
 
     <footer id="main-footer"></footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/theme-switcher.js"></script>
 
-    <!-- COMPLETE & CORRECTED SCRIPT FOR HOMEPAGE -->
+    <!-- CORRECTED SCRIPT FOR HOMEPAGE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
         
-        const firebaseConfig = { apiKey: "AIzaSyBzAT0Chvt7xBDf01TxaAYzfhSznr4qhck", authDomain: "sandunportfolio.firebaseapp.com", projectId: "sandunportfolio", storageBucket: "sandunportfolio.appspot.com", messagingSenderId: "367143211095", appId: "1:367143211095:web:0f0fb1db9b706b60b61312", measurementId: "G-MDMDYC2L3F" };
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzAT0Chvt7xBDf01TxaAYzfhSznr4qhck",
+            authDomain: "sandunportfolio.firebaseapp.com",
+            projectId: "sandunportfolio",
+            storageBucket: "sandunportfolio.appspot.com", // Corrected storage bucket
+            messagingSenderId: "367143211095",
+            appId: "1:367143211095:web:0f0fb1db9b706b60b61312",
+            measurementId: "G-MDMDYC2L3F"
+        };
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Load Featured Case Studies ---
-            const caseStudiesGrid = document.getElementById('featured-projects-grid');
-            const csQuery = query(collection(db, 'case_studies'), orderBy('title'));
-            onSnapshot(csQuery, (snapshot) => {
-                if (!caseStudiesGrid) return;
-                caseStudiesGrid.innerHTML = '';
-                snapshot.docs.slice(0, 3).forEach(doc => {
-                    const project = { id: doc.id, ...doc.data() };
-                    const cardLink = document.createElement('a');
-                    cardLink.href = `case-study-detail.html?id=${project.id}`;
-                    cardLink.className = 'project-card fade-in';
-                    cardLink.innerHTML = `<img src="${project.imageUrl || 'https://placehold.co/600x400/0d9488/FFF?text=Project'}" alt="${project.title}"><div class="project-card-content"><span class="project-category">${Array.isArray(project.category) ? project.category.join(' / ') : project.category}</span><h3>${project.title}</h3><p>${project.summary}</p></div>`;
-                    caseStudiesGrid.appendChild(cardLink);
-                });
-                initializeAnimations();
-            });
+            // --- Load Featured Projects ---
+            fetch('assets/data/projects.json')
+                .then(response => { if (!response.ok) throw new Error('Network error'); return response.json(); })
+                .then(data => {
+                    const container = document.getElementById('featured-projects-grid');
+                    if (!container) return;
+                    container.innerHTML = '';
+                    data.projects.slice(0, 3).forEach(project => {
+                        const cardLink = document.createElement('a');
+                        cardLink.href = `project-detail.html?id=${project.id}`;
+                        cardLink.className = 'project-card fade-in';
 
-            // --- Load Testimonials and Initialize Slider ---
-            const testimonialsWrapper = document.getElementById('testimonials-wrapper');
-            const testimonialsQuery = query(collection(db, 'testimonials'), orderBy('author'));
-            
-            onSnapshot(testimonialsQuery, (snapshot) => {
-                if (!testimonialsWrapper) return;
+                        const image = document.createElement('img');
+                        image.src = project.thumbnailUrl;
+                        image.alt = project.title;
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = 'project-card-content';
+                        
+                        const categorySpan = document.createElement('span');
+                        categorySpan.className = 'project-category';
+                        categorySpan.textContent = project.category;
+
+                        const titleH3 = document.createElement('h3');
+                        titleH3.textContent = project.title;
+
+                        const summaryP = document.createElement('p');
+                        summaryP.textContent = project.summary;
+
+                        contentDiv.appendChild(categorySpan);
+                        contentDiv.appendChild(titleH3);
+                        contentDiv.appendChild(summaryP);
+                        cardLink.appendChild(image);
+                        cardLink.appendChild(contentDiv);
+                        container.appendChild(cardLink);
+                    });
+                    initializeAnimations();
+                })
+                .catch(error => {
+                    console.error('Failed to load projects:', error);
+                    const container = document.getElementById('featured-projects-grid');
+                    if(container) container.innerHTML = '<p class="error-message">Could not load projects.</p>';
+                });
+
+            // --- Load Testimonials ---
+            const testimonialsGrid = document.getElementById('testimonials-grid');
+            const testimonialsCol = collection(db, 'testimonials');
+            onSnapshot(testimonialsCol, (snapshot) => {
                 if (snapshot.empty) {
-                    testimonialsWrapper.innerHTML = '<p class="info-message">No testimonials added yet.</p>';
+                    testimonialsGrid.innerHTML = '<p class="info-message">No testimonials added yet.</p>';
                     return;
                 }
-                testimonialsWrapper.innerHTML = ''; // Clear spinner
+                testimonialsGrid.innerHTML = '';
                 snapshot.docs.forEach(doc => {
                     const testimonial = doc.data();
-                    const slide = document.createElement('div');
-                    slide.className = 'swiper-slide';
-                    
                     const card = document.createElement('div');
-                    card.className = 'testimonial-card';
+                    card.className = 'testimonial-card fade-in';
                     card.innerHTML = `
-                        <div class="testimonial-icon">“</div>
-                        <p class="testimonial-quote">${testimonial.quote}</p>
-                        <footer class="testimonial-attribution">
-                            <p class="testimonial-author">${testimonial.author}</p>
-                            <p class="testimonial-title">${testimonial.title}</p>
-                        </footer>
+                        <p class="testimonial-quote">"${testimonial.quote}"</p>
+                        <p class="testimonial-author">${testimonial.author}</p>
+                        <p class="testimonial-title">${testimonial.title}</p>
                     `;
-                    slide.appendChild(card);
-                    testimonialsWrapper.appendChild(slide);
+                    testimonialsGrid.appendChild(card);
                 });
-
-                // Initialize SwiperJS
-                new Swiper('.testimonial-slider', {
-                    loop: true,
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    autoplay: { delay: 5000, disableOnInteraction: false },
-                    pagination: { el: '.swiper-pagination', clickable: true },
-                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-                    breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 } }
-                });
+                initializeAnimations();
             });
         });
     </script>
 </body>
 </html>
+

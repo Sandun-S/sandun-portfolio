@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
