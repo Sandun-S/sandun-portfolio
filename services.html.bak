@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Sandun Siwantha</title>
+    <meta name="description" content="Explore professional engineering services including firmware development, custom PCB design, IoT and cloud integration, and automation solutions for businesses in Sri Lanka and worldwide.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+        <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
+</head>
+<body>
+
+    <header id="main-header"></header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>My Services</h1>
+                <p>Providing a comprehensive suite of embedded systems engineering services, from initial concept to production-ready prototypes</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <!-- FIXED: Added a wrapper div with a new class for the main services grid -->
+                <div class="services-grid-main">
+                    
+                    <div class="service-card-main fade-in">
+                        <h3>For University Students & Final Year Projects</h3> 
+                        <p>Navigating the complexities of a Final Year Project can be challenging. I offer specialized guidance and development support to help you turn your academic concept into a high-quality, working prototype. My services include hardware design consultation, PCB layout, firmware development, and debugging assistance to ensure your project is a success.</p>
+                        <!-- <ul>
+                            <li>Microcontroller-based Systems</li>
+                            <li>Sensor Integration & Actuator Control</li>
+                            <li>Process Automation</li>
+                            <li>Human-Machine Interface (HMI) Design</li>
+                        </ul> -->
+                    </div>
+
+                    <div class="service-card-main fade-in">
+                        <h3>For Startups & Businesses</h3>
+                        <p>Accelerate your time-to-market and de-risk your hardware development. I provide the focused, on-demand expertise you need to build a professional MVP, test your product idea, and create a production-ready design without the overhead of a full-time hire. Let me handle the hardware, so you can focus on growing your business.</p>
+                        <!-- <ul>
+                            <li>Microcontroller-based Systems</li>
+                            <li>Sensor Integration & Actuator Control</li>
+                            <li>Process Automation</li>
+                            <li>Human-Machine Interface (HMI) Design</li>
+                        </ul> -->
+                    </div>
+
+                    <div class="service-card-main fade-in">
+                        <h3>Firmware Development & Debugging</h3>
+                        <p>The firmware is the brain of your electronic device. I specialize in writing clean, efficient, and reliable C/C++ code that makes your hardware perform flawlessly. My expertise covers everything from low-level bare-metal programming to complex real-time operating systems (RTOS), ensuring your product is stable, responsive, and power-efficient.</p>
+                        <ul>
+                            <li>Bare-metal & RTOS Programming</li>
+                            <li>Driver Development</li>
+                            <li>Bug Fixing & Performance Optimization</li>
+                            <li>Bootloader Development</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card-main fade-in">
+                        <h3>IoT & Cloud Integration</h3>
+                        <p>I architect and build complete Internet of Things (IoT) solutions that bridge the physical and digital worlds. From selecting the right wireless protocols to integrating with powerful cloud platforms, I create systems that deliver secure, reliable, and actionable data from your devices to your dashboard.</p>
+                         <ul>
+                            <li>End-to-End System Architecture</li>
+                            <li>Wireless Protocol Integration</li>
+                            <li>Cloud Platform Setup & Integration</li>
+                            <li>Data Visualization Dashboards</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card-main fade-in">
+                        <h3>Custom PCB Design & Prototyping</h3>
+                        <p>Transform your concept into a tangible, professional product. Using industry-standard tools like Altium, Eagle, and EasyEDA, I provide schematic capture and multi-layer PCB layout focused on reliability and manufacturability. I can manage the entire prototyping process, from component sourcing to coordinating with manufacturers for assembly.</p>
+                        <ul>
+                            <li>Schematic Design & Layout</li>
+                            <li>High-Density & Power-Efficient Design</li>
+                            <li>Component Sourcing</li>
+                            <li>Prototype Assembly & Testing</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card-main fade-in">
+                        <h3>Automation & Control Systems</h3>
+                        <p>Leveraging my experience in industrial automation, I design and build custom control systems to improve efficiency in manufacturing, agriculture, and smart environments. This includes integrating sensors, controlling actuators, and creating bespoke microcontroller-based solutions for specific tasks.</p>
+                        <ul>
+                            <li>Microcontroller-based Systems</li>
+                            <li>Sensor Integration & Actuator Control</li>
+                            <li>Process Automation</li>
+                            <li>Human-Machine Interface (HMI) Design</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container text-center">
+                 <h2 class="cta-title">Ready to Start Your Project?</h2>
+                 <p class="cta-text">Let's discuss your requirements and how I can help you achieve your goals.</p>
+                 <a href="contact.html" class="btn btn-primary">Request a Free Consultation</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/theme-switcher.js"></script>
+</body>
+</html>
+
