@@ -124,7 +124,10 @@ You need to add a few new styles to your `style.css` file to support the redesig
   const analytics = getAnalytics(app);
 </script>
 
-
+https://i.ibb.co/WvBFDV9Z/Audio-Classification-with-CNN-for-Edge-AI.jpg
+https://i.ibb.co/Kx0k8bGd/Battery-Powered-ESP32-Air-Quality-Monitor.jpg
+https://i.ibb.co/1fKLJ0Vy/ESPVoice-Net-Scalable-ESP32-Voice-Communication-System.jpg
+https://i.ibb.co/ZzGMsjsk/STM32-Based-Sensor-Interface-Board.jpg
 
 
 Manual Updates: Make your changes locally, then run a single command (firebase deploy) in your terminal to push the updates live. It's fast and simple.
