@@ -38,6 +38,24 @@
             "githubUrl": null
         },
         {
+            "id": "industrial-firmware",
+            "title": "Firmware Refactoring for Industrial Controller",
+            "category": "Firmware",
+            "summary": "Refactored and optimized legacy C firmware for an STM32-based industrial control unit, improving reliability and performance by over 50%.",
+            "thumbnailUrl": "https://i.ibb.co/zH6VVMW1/Firmware-Refactoring-for-Industrial-Controller.jpg",
+            "heroUrl": "https://i.ibb.co/zH6VVMW1/Firmware-Refactoring-for-Industrial-Controller.jpg",
+            "overview": "Refactored and optimized the C firmware for a legacy industrial control unit based on an STM32 microcontroller. The original code suffered from instability and timing issues. I implemented a real-time operating system (FreeRTOS) to manage tasks efficiently, resolved critical bugs through systematic debugging with a JTAG probe, and improved the system's overall reliability and performance by over 50%. This extended the product's lifecycle and saved the client significant hardware replacement costs.",
+            "technologies": ["STM32", "C", "FreeRTOS", "JTAG/SWD Debugging", "CAN Bus"],
+            "features": [
+                "Implementation of a Real-Time Operating System (RTOS).",
+                "Preemptive task scheduling for deterministic performance.",
+                "Improved system stability and fault tolerance.",
+                "Modular code structure for easier maintenance."
+            ],
+            "challenges": "Introducing an RTOS into a legacy monolithic codebase without breaking existing functionality was difficult. The solution involved a gradual, module-by-module migration of functionalities into separate tasks, extensive regression testing at each step, and careful management of shared resources using mutexes and semaphores.",
+            "githubUrl": "https://github.com/Sandun-S"
+        },
+        {
             "id": "smart-hydroponics",
             "title": "Automated Hydroponics Controller",
             "category": "Automation",
