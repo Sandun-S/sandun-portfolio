@@ -27,10 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const footerHTML = `
         <div class="container footer-content">
-            <p>&copy; ${new Date().getFullYear()} Sandun Siwantha. All rights reserved.</p>
             <p>
                 <a href="https://www.linkedin.com/in/sandun-siwantha" target="_blank">LinkedIn</a> |
                 <a href="https://github.com/Sandun-S" target="_blank">GitHub</a>
+            </p>
+            <p>
+                &copy; ${new Date().getFullYear()} Sandun Siwantha (ElectroSense Solutions). All rights reserved. | 
+                <a href="/privacy-policy">Privacy Policy</a> 
             </p>
         </div>
     `;
